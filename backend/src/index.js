@@ -7,6 +7,9 @@ const cors = require('cors')
 
 const app = express();
 
+//routes
+const userRoutes = require("./routes/user");
+
 
 
 //env initialising
@@ -20,22 +23,14 @@ mongoose.connect (mongoURI ,function(){
 
 
 
-app.use(express.json())
-app.use(bodyParser.urlencoded({ extended: true }));
+
+
+// app.use(express.json())
+// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(cors());
+app.use("/api", userRoutes);
 
-
-app.get("/", function(req, res,next){
-    res.status(200).json({
-        message: "HII good morning"
-    });
-})
-
-app.post("/data", (req, res,next) => {
-    res.status(200).json({
-        message: req.body
-    });
-})
 
 
 app.listen(process.env.PORT, () => {
