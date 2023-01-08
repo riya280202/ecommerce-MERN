@@ -8,7 +8,8 @@ const cors = require('cors')
 const app = express();
 
 //routes
-const userRoutes = require("./routes/user");
+const authRoutes = require("./routes/auth");
+const adminRoutes = require("./routes/admin/auth");
 
 
 
@@ -29,7 +30,8 @@ mongoose.connect (mongoURI ,function(){
 // app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
-app.use("/api", userRoutes);
+app.use("/api", authRoutes);
+app.use("/api", adminRoutes);
 
 
 

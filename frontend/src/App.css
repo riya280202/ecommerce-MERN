@@ -1,0 +1,10 @@
+.jumbotron{
+  font-size: 2.8rem;
+  display: flex;
+  margin-top: 6rem;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+
+}
