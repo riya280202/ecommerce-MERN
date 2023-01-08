@@ -17,7 +17,9 @@ const adminRoutes = require("./routes/admin/auth");
 env.config();
 
 
-const mongoURI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.jhcggji.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
+// const mongoURI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.jhcggji.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
+
+const mongoURI = "mongodb://localhost:27017/Ecommerce"
 mongoose.connect (mongoURI ,function(){
     console.log("Connected to database");
 })
