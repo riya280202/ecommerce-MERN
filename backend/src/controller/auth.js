@@ -1,11 +1,7 @@
 const User = require("../models/user");
 const jwt = require("jsonwebtoken")
-const {validationResult} = require("express-validator");
 
 exports.signup= (req,res) => {
-
-    const errors = validationResult(req);
-    return res.status(400).json({errors: errors.array()})
 
 
     User.findOne({email: req.body.email})
