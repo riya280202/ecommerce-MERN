@@ -10,7 +10,7 @@ const app = express();
 //routes
 const authRoutes = require("./routes/auth");
 const adminRoutes = require("./routes/admin/auth");
-
+const categoryRoutes = require("./routes/category");
 
 
 //env initialising
@@ -34,6 +34,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use("/api", authRoutes);
 app.use("/api", adminRoutes);
+app.use("/api", categoryRoutes);
 
 
 
