@@ -3,6 +3,7 @@ const env = require("dotenv");
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const cors = require('cors')
+const path = require("path");
 
 
 const app = express();
@@ -12,6 +13,7 @@ const authRoutes = require("./routes/auth");
 const adminRoutes = require("./routes/admin/auth");
 const categoryRoutes = require("./routes/category");
 const productRoutes = require("./routes/product");
+const cartRoutes = require("./routes/cart");
 
 
 //env initialising
@@ -29,14 +31,15 @@ mongoose.connect (mongoURI ,function(){
 
 
 
-// app.use(express.json())
+app.use(express.json())
 // app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 app.use(cors());
+app.use('/public', express.static(path.join(__dirname, "uploads")));
 app.use("/api", authRoutes);
 app.use("/api", adminRoutes);
 app.use("/api", categoryRoutes);
 app.use("/api", productRoutes);
+app.use("/api", cartRoutes);
 
 
 
