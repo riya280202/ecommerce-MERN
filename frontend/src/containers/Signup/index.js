@@ -2,8 +2,14 @@ import React from "react";
 import Layout from "../../components/layout";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
 import Input from "../../components/UI/Input";
+import { useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
 
 function Signup() {
+  const auth = useSelector(state => state.auth);
+  if(auth.authenticate){
+    return <Navigate to={"/"} />
+  }
   return (
     <div>
       <Layout>
