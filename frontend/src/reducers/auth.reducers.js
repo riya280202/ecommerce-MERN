@@ -1,42 +1,60 @@
-import { authConstants } from "../actions/constants"
+import { Action } from "@remix-run/router";
+import { authConstants } from "../actions/constants";
 
 const initState = {
-    token: null,
-    user: {
-        firstName: "",
-        lastName: "",
-        email: "",
-        picture: ""
-    },
-    authenticate: false,
-    authenticating: false
-}
+  token: null,
+  user: {
+    firstName: "",
+    lastName: "",
+    email: "",
+    picture: "",
+  },
+  authenticate: false,
+  authenticating: false,
+  loading: false,
+  error: null,
+  message: "",
+};
 
-export default ( state = initState, action) => {
-    console.log(action)
+export default (state = initState, action) => {
+  console.log(action);
 
-    switch(action.type){
-        case authConstants.LOGIN_REQUEST: 
-            state= {
-                ...state,
-                authenticating: true
-            }
-            break;
-        case authConstants.LOGIN_SUCCESS: 
-            state= {
-                ...state,
-                user: action.payload.user,
-                token: action.payload.token,
-                authenticate: true,
-                authenticating: false
-            }
-            break;
-        case authConstants.LOGOUT_REQUEST:
-            state = {
-                ...initState
-            }
-            break;
-    }
+  switch (action.type) {
+    case authConstants.LOGIN_REQUEST:
+      state = {
+        ...state,
+        authenticating: true,
+      };
+      break;
+    case authConstants.LOGIN_SUCCESS:
+      state = {
+        ...state,
+        user: action.payload.user,
+        token: action.payload.token,
+        authenticate: true,
+        authenticating: false,
+      };
+      break;
+    case authConstants.LOGOUT_REQUEST:
+      state = {
+        ...initState,
+        loading: true,
+      };
+      break;
 
-    return state;
-}
+    case authConstants.LOGOUT_SUCCESS:
+      state = {
+        ...initState,
+      };
+      break;
+    case authConstants.LOGOUT_FAILURE:
+      state = {
+        ...state,
+        error: action.payload.error,
+        loading: false
+      };
+      break;
+  }
+
+  return state;
+};

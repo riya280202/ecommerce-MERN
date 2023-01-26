@@ -5,6 +5,8 @@ import {Routes, Route } from "react-router-dom";
 import Home from './containers/Home';
 import Signin from './containers/Signin';
 import Signup from './containers/Signup';
+import Products from './containers/Products';
+import Orders from './containers/Orders';
 import PrivateRoute from "./components/HOC/PrivateRoute"
 import { useDispatch, useSelector } from 'react-redux';
 import {isUserLoggedIn} from "./actions"
@@ -24,7 +26,11 @@ function App() {
     <div className="App">
         <Routes>
           <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} />
-          <Route path="/" exact element={<Home />} />
+          <Route path="/products" element={<PrivateRoute> <Products /> </PrivateRoute>} />
+          <Route path="/orders" element={<PrivateRoute><Orders /> </PrivateRoute>} />
+
+
+
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
