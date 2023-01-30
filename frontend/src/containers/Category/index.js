@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Modal, Button } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { addCategory, getAllCategory } from "../../actions";
 import Layout from "../../components/layout";
 import Input from "../../components/UI/Input";
+import Modal from "../../components/UI/Modal";
 
 function Category(props) {
   const category = useSelector((state) => state.category);
@@ -13,9 +14,6 @@ function Category(props) {
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getAllCategory());
-  }, []);
 
   const handleClose = () => {
     const form = new FormData();
@@ -24,6 +22,8 @@ function Category(props) {
     form.append("parentId", parentCategoryId);
     form.append("categoryImage", categoryImage);
     dispatch(addCategory(form));
+    setCategoryName("");
+    setparentCategoryId("");
     // const cat = {
     //     categoryName,
     //     parentCategoryId,
@@ -82,14 +82,12 @@ function Category(props) {
           </Col>
         </Row>
       </Container>
-
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Add New Category</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Input
-            label="Category"
+      <Modal
+        modelTitle = {"Add new Category"}
+        show={show}
+        handleClose= {handleClose}
+      >
+      <Input
             placeholder="Add Category"
             value={categoryName}
             type="text"
@@ -110,17 +108,10 @@ function Category(props) {
           </select>
 
           <Input
-            label="Add Image"
             type="file"
             name="categoryImage"
             onChange={handleCategoryImage}
           />
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
       </Modal>
     </Layout>
   );
