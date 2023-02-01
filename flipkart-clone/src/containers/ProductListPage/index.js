@@ -25,6 +25,39 @@ function ProductListPage(props) {
 
   return (
     <Layout>
+      <div className="card">
+      <div className="cardHeader">
+              <div>Latest {slug} mobile</div>
+              <button>View All</button>
+            </div>
+      </div>
+      {
+        <div style={{display: "flex"}}>
+          
+          {
+          product.products.slice(0,8).map((product) => (
+                <div className="productContainer">
+                  <div className="productImgContainer">
+                    <img
+                      src={generatePublicUrl(product.productPictures[0].img)}
+                      alt=""
+                    />
+                  </div>
+                  <div className="productInfo">
+                    <div className="productTitle">
+                      {product.name}
+                    </div>
+                    <div>
+                      <span>4.3</span>&nbsp;
+                      <span>3434</span>
+                    </div>
+                    <div className="productPrice">{product.price}</div>
+                  </div>
+                </div>
+              ))
+              }
+        </div>
+      }
       {Object.keys(product.productsByPrice).map((key, index) => {
         return (
           <div className="card">
