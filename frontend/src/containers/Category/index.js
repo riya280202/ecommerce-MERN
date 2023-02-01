@@ -129,8 +129,7 @@ function Category(props) {
 
   const deleteCategories = () => {
     const checkedIdsArray = checkedArray.map((item,index) => ({_id: item.value}));
-    const expandedIdsArray = expandedArray.map((item,index) => ({_id: item.value}));
-    const idsArray = expandedIdsArray.concat(checkedIdsArray);
+    const idsArray = checkedIdsArray;
     dispatch(deleteCategoriesAction(idsArray))
     .then(result => {
       if(result){
