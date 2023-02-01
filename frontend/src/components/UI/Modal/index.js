@@ -16,8 +16,10 @@ function NewModal(props) {
             </Button>
           )) 
           :
-          <Button variant="primary" onClick={props.handleClose}>
-          Save Changes
+          <Button variant="primary" className="btn-sm" onClick={props.handleClose} {...props}
+          style={{backgroundColor:"#333", padding: "5px 35px"}}
+          >
+          Save
         </Button>
         }
         
