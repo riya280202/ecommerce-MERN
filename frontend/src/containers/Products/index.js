@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Layout from "../../components/layout";
-import { Container, Row, Col, Table } from "react-bootstrap";
+import { Container, Row, Col, Table, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Input from "../../components/UI/Input";
 import { addProduct } from "../../actions";
@@ -216,10 +216,10 @@ function Products() {
     <Layout sidebar>
       <Container>
       <Row>
-        <Col md={12}>
+        <Col md={12} style={{margin: "20px 0"}}>
           <div style={{ display: "flex ", justifyContent: "space-between" }}>
             <h3>Products</h3>
-            <button onClick={handleShow}>Add</button>
+            <Button variant="primary" style={{marginRight: "50px", padding: "0 35px"}} onClick={handleShow}>Add</Button>
           </div>
         </Col>
       </Row>

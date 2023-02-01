@@ -55,3 +55,18 @@ export const updateCategories = (form) => {
 
     }
 }
+
+export const deleteCategories = (ids) => {
+    return async dispatch => {
+        const res = await axios.post("http://localhost:2000/api/category/delete", {
+            payload: {
+                ids
+            }
+        });
+        if(res.status ==201){
+            return true;
+        } else{
+            return false;
+        }
+    }
+}

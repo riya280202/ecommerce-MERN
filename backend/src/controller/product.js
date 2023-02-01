@@ -75,3 +75,4 @@ exports.getProductsBySlug = (req, res) => {
       }
     });
 };
+
