@@ -11,6 +11,7 @@ import PrivateRoute from "./components/HOC/PrivateRoute"
 import { useDispatch, useSelector } from 'react-redux';
 import {isUserLoggedIn, getInitialData} from "./actions"
 import Category from './containers/Category';
+import NewPage from './containers/NewPage';
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
     <div className="App">
         <Routes>
           <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} />
+          <Route path="/page" element={<PrivateRoute><NewPage /></PrivateRoute>} />
           <Route path="/category" element={<PrivateRoute><Category /></PrivateRoute>} />
           <Route path="/products" element={<PrivateRoute> <Products /> </PrivateRoute>} />
           <Route path="/orders" element={<PrivateRoute><Orders /> </PrivateRoute>} />
