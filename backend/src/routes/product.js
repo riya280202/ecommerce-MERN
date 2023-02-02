@@ -1,8 +1,8 @@
 const express = require("express");
 const { createProduct, getProductsBySlug } = require("../controller/product");
-const multer = require("multer");
 const { requireSignin, adminMiddleware } = require("../middleware");
 const router = express.Router();
+const multer = require("multer");
 const shortid = require("shortid");
 const path = require("path")
 

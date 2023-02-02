@@ -40,8 +40,20 @@ function Category(props) {
   const [updateCategoryModel, setUpdateCategoryModel] = useState(false);
   const [deleteCategoryModel, setDeleteCategoryModel] = useState(false);
 
+
+  useEffect(() => {
+    if(!category.loading){
+      setShow(false);
+    }
+  }, [category.loading]);
+
   const handleClose = () => {
     const form = new FormData();
+
+    if(categoryName === ""){
+      alert("Category Name is Required");
+      return;
+    }
 
     form.append("name", categoryName);
     form.append("parentId", parentCategoryId);
@@ -233,7 +245,8 @@ function Category(props) {
       <AddCategoryModel
         modelTitle={"Add New Category"}
         show={show}
-        handleClose={handleClose}
+        handleClose={() => setShow(false)}
+        onSubmit={handleClose}
         setCategoryName={setCategoryName}
         parentCategoryId={parentCategoryId}
         setparentCategoryId={setparentCategoryId}
@@ -245,7 +258,8 @@ function Category(props) {
         modelTitle={"Update Categories"}
         size="lg"
         show={updateCategoryModel}
-        handleClose={updateCategoriesForm}
+        handleClose={() => setUpdateCategoryModel(false)}
+        onSubmit={updateCategoriesForm}
         expandedArray={expandedArray}
         checkedArray={checkedArray}
         handleCategoryInput={handleCategoryInput}

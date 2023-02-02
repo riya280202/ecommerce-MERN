@@ -16,8 +16,8 @@ function NewModal(props) {
             </Button>
           )) 
           :
-          <Button variant="primary" className="btn-sm" onClick={props.handleClose} {...props}
-          style={{backgroundColor:"#333", padding: "5px 35px"}}
+          <Button variant="primary" className="btn-sm" onClick={props.onSubmit} {...props}
+          style={{backgroundColor:"#333", padding: "5px 15px"}}
           >
           Save
         </Button>

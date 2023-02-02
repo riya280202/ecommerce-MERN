@@ -13,10 +13,16 @@ const AddCategoryModel = (props) => {
     setparentCategoryId,
     categoryList,
     handleCategoryImage,
+    onSubmit
   } = props;
 
   return (
-    <Modal modelTitle={modelTitle} show={show} handleClose={handleClose}>
+    <Modal 
+    modelTitle={modelTitle} 
+    show={show} 
+    handleClose={handleClose}
+    onSubmit={onSubmit}
+    >
       <Row>
         <Col>
           <Input

@@ -1,8 +1,9 @@
 const express = require("express");
 const { initalData } = require("../../controller/admin/initialData");
+const { requireSignin, adminMiddleware } = require("../../middleware");
 const router = express.Router();
 
-router.post("/initialData", initalData);
+router.post("/initialData", requireSignin, adminMiddleware, initalData);
 
 
 // router.post("/profile",requireSignin, (req,res) => {

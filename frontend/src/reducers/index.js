@@ -4,6 +4,7 @@ import userReducers from "./user.reducer";
 import productReducers from "./product.reducer"
 import orderReducers from "./order.reducer"
 import categoryReducers from "./category.reducer"
+import pageReducers from "./page.reducer"
 
 
 const rootReducer = combineReducers({
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
     user: userReducers,
     category: categoryReducers,
     product: productReducers,
-    order: orderReducers
+    order: orderReducers,
+    page: pageReducers
 
 })
 
